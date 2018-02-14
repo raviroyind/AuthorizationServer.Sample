@@ -1,0 +1,52 @@
+﻿@model AuthorizationServer.Models.ClientViewModels.ClientInputModel;
+
+<div class="row">
+    <h2>Update</h2>
+    <div class="col-md-4">
+        <section>
+            <form asp-controller="Open" asp-action="Update" method="post">
+                <input type="hidden" asp-for="ClientId" />
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ClientName"></label>
+                    <input asp-for="ClientName" class="form-control" />
+                    <span asp-validation-for="ClientName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RedirectUrl"></label>
+                    <input asp-for="RedirectUrl" class="form-control" />
+                    <span asp-validation-for="RedirectUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PostLogoutRedirectUrl"></label>
+                    <input asp-for="PostLogoutRedirectUrl" class="form-control" />
+                    <span asp-validation-for="PostLogoutRedirectUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AllowedScope"></label>
+                    <input asp-for="AllowedScope" class="form-control" />
+                    <span asp-validation-for="AllowedScope" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="RequireConsent">
+                            <input asp-for="RequireConsent" checked />
+                            @Html.DisplayNameFor(m => m.RequireConsent)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">更新</button>
+                    <button type="reset" class="btn btn-default">重置</button>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <p>不知道放些什么好看点</p>
+    </div>
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

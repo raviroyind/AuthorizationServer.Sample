@@ -1,0 +1,17 @@
+﻿@model AuthorizationServer.Models.ConsentViewModels.ConsentViewModel
+<h2>About</h2>
+<div class="panel panel-default consent-buttons">
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-lock"></span>
+        Claims
+    </div>
+    <ul class="list-group" style="word-break:break-word">
+        @foreach (var claim in User.Claims)
+            {
+            <li class="list-group-item">
+                @claim.Type :
+                @claim.Value
+            </li>
+        }
+    </ul>
+</div>

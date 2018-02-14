@@ -1,0 +1,26 @@
+﻿@using AuthorizationServer.Models.ClientViewModels;
+@model List<ClientViewModel>
+<h2>Your Clients：</h2>
+
+@if (Model != null && Model.Any())
+{
+    foreach (var client in Model)
+    {
+        <hr />
+        <p>名称: @client.ClientName</p>
+        <p>ClientId: @client.ClientId</p>
+        <p>ClientSecret: @client.ClientSecret</p>
+        <p>跳转地址: @client.RedirectUrl</p>
+        <p>登出地址: @client.PostLogoutRedirectUrl</p>
+        <p>是否需要同意页: @(client.RequireConsent ? "是" : "否")</p>
+        <p>允许访问API：@client.AllowedScope</p>
+        <a class="btn btn-primary" href="/Open/Update?clientId=@client.ClientId" role="button">更新</a>
+    }
+}
+else
+{
+    <p>无</p>
+}
+
+<hr />
+<a class="btn btn-default" href="/Open/Create" role="button">网站接入</a>
